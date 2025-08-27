@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "JustServe Extra Info",
+  "version": "1.0",
+  "description": "Displays extra information on JustServe project pages.",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.justserve.org/projects/*"],
+      "js": ["content.js"]
+    }
+  ]
+}

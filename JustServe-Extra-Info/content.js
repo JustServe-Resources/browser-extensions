@@ -25,7 +25,11 @@ browser.runtime.onMessage.addListener((message) => {
         document.body.appendChild(infoContainer);
     }
 
-    // Add some styles for the links
+    // Determine checkbox color based on listed status
+    const isListed = !projectData.isUnlistedProject;
+    const checkboxColor = isListed ? 'green' : 'red';
+
+    // Add some styles for the links and checkbox
     const style = document.createElement('style');
     style.textContent = `
         #justserve-extra-info a {
@@ -44,6 +48,9 @@ browser.runtime.onMessage.addListener((message) => {
         #justserve-extra-info p {
             margin: 0 0 5px 0;
             color: var(--fbc-secondary-text, #5B5B66);
+        }
+        #justserve-extra-info input[type="checkbox"] {
+            accent-color: ${checkboxColor};
         }
     `;
     infoContainer.appendChild(style);
@@ -86,13 +93,23 @@ browser.runtime.onMessage.addListener((message) => {
 
     const createdInfo = `
       <h3>Project Created:</h3>
-      <p>${createdDate.toLocaleString()} (${Intl.DateTimeFormat().resolvedOptions().timeZone})</p>
+      <p>${createdDate.toLocaleString()}</p>
+    `;
 
+    // New section for unlisted status with checkbox and tooltip
+    let unlistedInfo = '';
+    const checkboxChecked = isListed ? 'checked' : '';
+    const tooltipText = isListed ? 'This project is publicly listed and will appear in searches.' : 'This project is unlisted and will not appear in public searches.';
+
+    unlistedInfo = `
+        <p>
+            Project Listed: <input type="checkbox" ${checkboxChecked} disabled title="${tooltipText}">
+        </p>
     `;
 
     // Add the info to the container
     const content = document.createElement('div');
-    content.innerHTML = ownerInfo + submitterInfo + createdInfo;
+    content.innerHTML = ownerInfo + submitterInfo + createdInfo + unlistedInfo; // Add unlistedInfo here
     infoContainer.appendChild(content);
   }
 });

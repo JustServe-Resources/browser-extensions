@@ -15,7 +15,7 @@ browser.runtime.onMessage.addListener((message) => {
         infoContainer.style.top = "100px";
         infoContainer.style.right = "20px";
         infoContainer.style.backgroundColor = "var(--fbc-white, #ffffff)";
-        infoContainer.style.border = "1px solid var(--fbc-gray-20, rgb(187, 189, 192))";
+        infoContainer.style.border = "1px solid rgb(187, 189, 192)";
         infoContainer.style.borderRadius = "12px";
         infoContainer.style.padding = "24px 16px 16px";
         infoContainer.style.zIndex = "10000";
@@ -33,7 +33,7 @@ browser.runtime.onMessage.addListener((message) => {
     const style = document.createElement('style');
     style.textContent = `
         #justserve-extra-info a {
-            color: var(--fbc-blue-60, #0060df);
+            color: #0081a0;
             text-decoration: none;
         }
         #justserve-extra-info a:hover {

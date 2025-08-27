@@ -86,7 +86,8 @@ browser.runtime.onMessage.addListener((message) => {
 
     const createdInfo = `
       <h3>Project Created:</h3>
-      <p>${createdDate.toLocaleString()}</p>
+      <p>${createdDate.toLocaleString()} (${Intl.DateTimeFormat().resolvedOptions().timeZone})</p>
+
     `;
 
     // Add the info to the container

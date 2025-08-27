@@ -14,12 +14,14 @@ browser.runtime.onMessage.addListener((message) => {
         infoContainer.style.position = "fixed";
         infoContainer.style.top = "100px";
         infoContainer.style.right = "20px";
-        infoContainer.style.backgroundColor = "white";
-        infoContainer.style.border = "1px solid black";
-        infoContainer.style.padding = "10px";
+        infoContainer.style.backgroundColor = "var(--fbc-white, #ffffff)";
+        infoContainer.style.border = "1px solid var(--fbc-gray-20, rgb(187, 189, 192))";
+        infoContainer.style.borderRadius = "12px";
+        infoContainer.style.padding = "24px 16px 16px";
         infoContainer.style.zIndex = "10000";
-        infoContainer.style.fontFamily = "sans-serif";
-        infoContainer.style.fontSize = "14px";
+        infoContainer.style.fontFamily = "Noto Sans, sans-serif";
+        infoContainer.style.fontSize = "var(--fbc-font-size, 13px)";
+        infoContainer.style.color = "var(--fbc-primary-text, #15141A)";
         document.body.appendChild(infoContainer);
     }
 
@@ -27,7 +29,7 @@ browser.runtime.onMessage.addListener((message) => {
     const style = document.createElement('style');
     style.textContent = `
         #justserve-extra-info a {
-            color: #007bff;
+            color: var(--fbc-blue-60, #0060df);
             text-decoration: none;
         }
         #justserve-extra-info a:hover {
@@ -37,9 +39,11 @@ browser.runtime.onMessage.addListener((message) => {
             margin-top: 0;
             margin-bottom: 5px;
             font-size: 16px;
+            color: var(--fbc-primary-text, #15141A);
         }
         #justserve-extra-info p {
             margin: 0 0 5px 0;
+            color: var(--fbc-secondary-text, #5B5B66);
         }
     `;
     infoContainer.appendChild(style);
